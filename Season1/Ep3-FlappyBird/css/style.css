@@ -1,0 +1,12 @@
+#gameCanvas {
+    width : 320;
+    height: 480;
+    border: 1px solid #888;
+    margin: auto;
+    top: 0;
+    left: 0;
+    position: absolute;
+    display: block;
+    right: 0;
+    bottom: 0;
+}
