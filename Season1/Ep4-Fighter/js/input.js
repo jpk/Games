@@ -129,7 +129,6 @@ var Input = {
 
 	update: function(data){
 		var player = data.entities.player;
-		// player.currentState = player.states.standing;
 		
 		// Left arraw
 		if(Input.helpers.isDown(37)){
@@ -137,7 +136,7 @@ var Input = {
 				player.currentState = player.states.walking;
 			} else {
 				player.x -= player.velocity.x;
-				console.log(player.velocity.y);
+				// console.log(player.velocity.y);
 			}
 			
 			player.direction = "left";
@@ -150,7 +149,7 @@ var Input = {
 				player.currentState = player.states.walking;
 			} else {
 				player.x += player.velocity.x;
-				console.log(player.velocity.y);
+				// console.log(player.velocity.y);
 			}
 			
             player.direction = "right";
@@ -158,8 +157,18 @@ var Input = {
 		}
 
 
+		if(!Input.helpers.isDown(39) && !Input.helpers.isDown(37)){
+			if(player.currentState === player.states.walking){
+				player.currentState = player.states.standing;
+			}
+		}
+
+
 		//Up
 		if(Input.helpers.isPressed(38)){
+			// console.log(player.currentState);
+			// console.log(player.velocity.y);
+			
 			if(player.velocity.y === 0) {
 				player.currentState = player.states.jumping;
 			} 
