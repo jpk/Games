@@ -11,8 +11,12 @@ var Render = {
         
         
         Render.helpers.drawEntity(data.entities.player, data.canvas.fgCtx,1); 
+        // Render.helpers.drawRectangle(data.entities.player, data.canvas.fgCtx,1);         
+        
         context.scale(-1,1);
         Render.helpers.drawEntity(data.entities.opponent, data.canvas.fgCtx,-1);         
+        // Render.helpers.drawRectangle(data.entities.opponent, data.canvas.fgCtx,-1);         
+        
         context.scale(-1,1);
 
     },
@@ -24,6 +28,23 @@ var Render = {
                 entity.sprite.srcW,
                 entity.sprite.srcH,
                 entity.x * scale,
+                entity.y,
+                entity.width * scale,
+                entity.height);
+        },
+        drawOpponent : function(entity, ctx, scale){
+            ctx.drawImage(entity.sprite.img,
+                entity.sprite.srcX,
+                entity.sprite.srcY,
+                entity.sprite.srcW,
+                entity.sprite.srcH,
+                entity.x * scale,
+                entity.y,
+                entity.width,
+                entity.height);
+        },
+        drawRectangle : function(entity, ctx, scale){
+            ctx.fillRect(entity.x * scale,
                 entity.y,
                 entity.width,
                 entity.height);

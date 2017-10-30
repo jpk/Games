@@ -4,6 +4,7 @@ var Physics = {
         Physics.helpers.gravity(data.entities.opponent);
 
         Physics.helpers.handleWalls(data);
+        Physics.helpers.handleCollision (data.entities.player,data.entities.opponent,data.canvas.fgCanvas);
     },
     helpers : {
         gravity : function(entity){
@@ -39,6 +40,30 @@ var Physics = {
                 player.x = 0;
             }
 
+        },
+        handleCollision : function(player,opponent, canvas){
+            // console.log(player.x + "  Oppo " + opponent.x +"  - "+ opponent.width );
+            // console.log(player.x + "  " + player.width +"  oppo - "+ opponent.x );
+
+            if (!(player.x > opponent.x + opponent.width - 5||
+                player.x + player.width  < opponent.x -5) &&
+                !(player.y > opponent.y + opponent.height - 10 ||
+                player.y + player.height  < opponent.y + 5)
+                ) {
+                if(player.currentState === player.states.jumping){
+                    if(player.x > opponent.x + opponent.width/4){
+                        player.x += 7;
+                    } else {
+                        player.x -= 7 ;
+                    } 
+                }else {
+                    if(player.x > opponent.x ){
+                        player.x = opponent.x + opponent.width;
+                    } else {
+                        player.x = opponent.x - player.width ;
+                    }
+                }
+            }
         }
     }
 }

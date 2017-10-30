@@ -7,6 +7,6 @@ var Animation = {
         data.entities.player.currentState.animation(data);
     },
     opponent : function(data){
-        data.entities.player.currentState.animation(data);
+        data.entities.opponent.currentState.animation(data);
     }
 }

@@ -1,8 +1,8 @@
 var Entities = {
     init: function(data){
 
-        var ken = new Entities.characters.ken(data.spriteSheet.characters.ken,20,600,80,150);
-        var evilKen = new Entities.characters.ken(data.spriteSheet.characters.ken,550,600,80,150);
+        var ken = new Entities.characters.ken(data.spriteSheet.characters.ken,20,600,90,150);
+        var evilKen = new Entities.characters.ken(data.spriteSheet.characters.ken,800,600,90,150);
         data.entities.player = ken;
         data.entities.opponent = evilKen;
     },
@@ -100,13 +100,13 @@ var Entities = {
                     },
                     animation : function(data){
                         if(self.direction === "right"){
-							if(data.animationFrame % 30 === 0 ){
+							if(data.animationFrame % 12 === 0 ){
 								self.sprite = self.spriteAnimation.standRight.frames[self.spriteAnimation.standRight.currentFrame];	
                                 self.spriteAnimation.standRight.currentFrame = (self.spriteAnimation.standRight.currentFrame + 1) % 4;
                             }
                             
 						} else {
-							if(data.animationFrame % 18 === 0 ){
+							if(data.animationFrame % 12 === 0 ){
 								self.sprite = self.spriteAnimation.standLeft.frames[self.spriteAnimation.standLeft.currentFrame];	
 								self.spriteAnimation.standLeft.currentFrame = (self.spriteAnimation.standLeft.currentFrame + 1)  % 4;
 							}
@@ -141,7 +141,7 @@ var Entities = {
                 jumping : {
                     movement : function(data){
                         if(self.velocity.y === 0 ){
-                            self.velocity.y -= 39;
+                            self.velocity.y -= 40;
                             self.spriteAnimation.jumpRight.currentFrame = 0;
                         } else if(self.velocity.y < 0 ){
                             self.velocity.y /= 1.15;
